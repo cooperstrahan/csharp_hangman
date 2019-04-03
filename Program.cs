@@ -11,7 +11,7 @@ namespace hangman
 
         static void play(){
             System.Console.WriteLine("Please select a level! 1 2 3 4 or 5" );
-            int level = Console.ReadKey().KeyChar;
+            string level = Console.ReadLine();
             string[,] wordArr = new string[,]
             { 
                 {
@@ -38,11 +38,11 @@ namespace hangman
                 },
 
             };
-        
 
             Random random = new Random();
             string word = "";
-            word = wordArr[level, random.Next(0,20)];
+            Console.WriteLine(level+ " "+ random.Next(0,20));
+            word = wordArr[int.Parse(level)-1, random.Next(0,20)];
             guessWord(word);
         }
 
