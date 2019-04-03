@@ -6,51 +6,43 @@ namespace hangman
     {
         static void Main(string[] args)
         {
-            
-            play(1);
+            play();
         }
 
-        static void play(int level){
-            string[] wordArr = 
-            {
-                "printed","angle","planning","hidden","pain","today",
-                "away","stood","tried","hello","yet","week",
-                "settle","swung","southern","memory","basic","post",
-                "news","comfortable","fish","steep","terrible","heat",
-                "certain","article","pattern","character","floating","government",
-                "process","push","stuck","feed","noted","wild",
-                "deal","equal","due","wear","gather","sea"
-            };
+        static void play(){
+            System.Console.WriteLine("Please select a level! 1 2 3 4 or 5" );
+            int level = Console.ReadKey().KeyChar;
+            string[,] wordArr = new string[,]
+            { 
+                {
+                    "growth","airplane","similar","fewer","palace","station","these","some","sudden","park",
+                    "movie","buffalo","gravity","way","picture","breeze","package","look","behavior","organization"
+                },
+                {
+                    "rose","rabbit","look","listen","author","goose","game","play","wool","expression",
+                    "waste","guess","sat","ranch","result","arrange","relationship","replied","neighbor","tank"
+                },
+                {
+                    "cream","exclaimed","wore","important","equally","mathematics","product","solve","chapter","tower",
+                    "show","cook","bottom","citizen","salmon","fog","writing","personal","nature","speech"
+                },
+                {
+                    "task","fully","troops","region","die","north","tape","these","dirty","advice",
+                    "pair","forget","other","double","test","concerned","reach","pocket","built","everybody"
+                },
+                {
+                    "Compressed air energy storage","External combustion engine","Fischer-Tropsch process","Habitat reduction","Grid energy storage",
+                    "Savonius wind turbine","Thermal depolymerization","Water quality improvement","Vibration energy scavenging","Valence electrons",
+                    "Geothermal exchange heat pump","Uranium","Unbalanced force","Small Sealed Transportable Autonomous Reactor (SSTAR)","Recycling nutrients",
+                    "Piezoelectricity","Ocean thermal energy conversion","Nuclear fusion","Methanol economy","Magnetohydrodynamic"
+                },
 
-            string[] secondLevel =
-            {
-                "orange","stove","topic","repeat","dried","press","expect","from","herd","live",
-                "plane","possible","thrown","southern","return","mass","tea","feed","ability","direction",
-                "various","gulf","should","able","about","special","understanding","yesterday","mood","moving",
-                "been","affect","wish","steady","driving","snake","bare","trail","property","kitchen",
-                "musical","master","guess","living","length","they","it","then","combine","putting",
-                "said","certain","tube","generally","behavior","willing","result","outside","wind","army",
-                "writing","relationship","outline","level","push","must","due","rule","was","darkness",
-                "according","take","route","silent","world","expression","stand","fellow","complex","too",
-                "congress","angle","welcome","finish","whom","seldom","grow","steady","stiff","driver",
-                "stranger","putting","cry","modern","eat","blanket","member","fun","movement","beyond",
-                "purple","particular","slip","glass","wrong","hat","favorite","hide","observe","captured"
             };
+        
 
             Random random = new Random();
             string word = "";
-            if(level == 1)
-            {
-                Console.WriteLine("Playing Level 1!");
-                word = wordArr[random.Next(0, wordArr.Length)];
-            }
-            else if(level == 2)
-            {
-                Console.WriteLine("Playing Level 2!");
-                word = secondLevel[random.Next(0, wordArr.Length)];
-            }
-            
-            // Console.WriteLine(word);
+            word = wordArr[level, random.Next(0,20)];
             guessWord(word);
         }
 
@@ -199,7 +191,7 @@ namespace hangman
                 System.Console.WriteLine("Do you wan play again? Yes | No");
                 string answer = Console.ReadLine();
                 if(answer.ToLower() == "yes"){
-                    play(2);
+                    play();
                 }
             } else{
                 System.Console.WriteLine("You Lost!");
@@ -208,7 +200,7 @@ namespace hangman
                 System.Console.WriteLine("Do you wan play again? Yes | No");
                 string answer = Console.ReadLine();
                 if(answer.ToLower() == "yes"){
-                    play(1);
+                    play();
                 }
             }
         }
