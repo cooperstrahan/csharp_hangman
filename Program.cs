@@ -41,7 +41,7 @@ namespace hangman
 
             Random random = new Random();
             string word = "";
-            Console.WriteLine(level+ " "+ random.Next(0,20));
+            // Console.WriteLine(level+ " "+ random.Next(0,20));
             word = wordArr[int.Parse(level)-1, random.Next(0,20)];
             guessWord(word);
         }
